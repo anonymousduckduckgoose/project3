@@ -21,7 +21,7 @@ After=network.target
 
 [Service]
 User=azureuser
-ExecStart=/usr/bin/python3 /home/azureuser/ff.py
+ExecStart=/usr/bin/python3 /home/azureuser/project3-1.0.0/favfetch.py
 Restart=always
 
 [Install]
