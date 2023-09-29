@@ -12,28 +12,35 @@ Favicon Fetcher is a FastAPI service designed to fetch favicon URLs from given w
 - httpx
 - BeautifulSoup
 - Prometheus (Optional, for metrics)
+- Pytest (Optional, for testcase validations)
 
 ### Installation
 
-1. Clone the repository by curling the most recent release cut in a tarball.
+1. Clone the repository by curling and unzipping the most recent release cut in a tarball.
+```bash
+curl -L "https://github.com/anonymousduckduckgoose/project3/archive/refs/tags/v2.0.0.tar.gz" > project3-v2.0.0.tar.gz
+tar -xf project3-v2.0.0.tar.gz
+```
+
 2. Change directory into your newly cloned repo and run the setup.sh script:
 
 ```bash
-cd project3
+cd project3-2.0.0
 ./setup.sh
 ```
 
 ### Usage
 
-Once the service is running, you can fetch favicons by making a GET request to:
+Once the service is running, you can fetch favicons by making GET requests:
 
 ```bash
+# From the local machine
 http://localhost:8000/favicon/{protocol:url}
 ```
 
-If your host and port are externally exposed by an IP or domain, you can replace localhost:8000 with the appropriate external address.
+If your host and port are externally exposed by an IP or domain, you can replace PUBLICIP:8000 with the appropriate external address.
 
 ### Sample Requests
 ```bash
-http://localhost:8000/favicon/http:duckduckgo.com
+http://PUBLICIP:8000/favicon/http:duckduckgo.com
 ```
