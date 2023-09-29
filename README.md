@@ -11,10 +11,12 @@ Favicon Fetcher is a FastAPI service designed to fetch favicon URLs from given w
 - Uvicorn
 - httpx
 - BeautifulSoup
-- Prometheus (Optional, for metrics)
+- Prometheus (for metrics)
 - Pytest (Optional, for testcase validations)
 
 ### Installation
+This installation includes monitoring. If you would like to disable monitoring, 
+you may comment out lines 17-58 in ./docker-compose.yml
 
 1. Clone the repository by curling and unzipping the most recent release cut in a tarball.
 ```bash
@@ -43,4 +45,12 @@ If your host and port are externally exposed by an IP or domain, you can replace
 ### Sample Requests
 ```bash
 http://PUBLICIP:8000/favicon/http:duckduckgo.com
+```
+
+### Tests
+Simplified testcases are provided via ./test/test-favicon-service.py
+To run these tests from the VM, simply run:
+
+```bash
+python3 -m pytest test-favicon-service.py
 ```
