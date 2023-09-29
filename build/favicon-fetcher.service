@@ -5,7 +5,7 @@ Requires=docker.service
 
 [Service]
 TimeoutStartSec=0
-Restart=yes
+Restart=unless-stopped
 ExecStartPre=-/usr/bin/docker stop favicon-fetcher
 ExecStartPre=-/usr/bin/docker rm favicon-fetcher
 ExecStartPre=/usr/bin/docker build -t favicon-fetcher /usr/src/app
