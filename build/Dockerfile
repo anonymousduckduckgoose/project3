@@ -13,5 +13,9 @@ RUN pip install --no-cache-dir -r ./requirements.txt
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
 
-# Run app.py when the container launches
-CMD ["uvicorn", "favicon_fetcher:app", "--host", "0.0.0.0", "--port", "8000"]
+# Set environment variables for python service
+ENV host=0.0.0.0
+ENV port=8000
+
+# Start python service
+ENTRYPOINT ["python3", "favicon_fetcher.py"]

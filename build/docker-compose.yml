@@ -1,5 +1,11 @@
 version: '1'
 
+# Builds the following services:
+#   favicon-fetcher (API service)
+#   prometheus (monitoring)
+#   node_exporter (export hardware and OS metrics to prometheus)
+#   Grafana (default dashboarding from prometheus)
+
 services:
   favicon-fetcher:
     build:
