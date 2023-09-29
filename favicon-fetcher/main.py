@@ -52,8 +52,8 @@ async def fetch_favicon(url: str):
         else: An unexpected error occurred
     '''
     # Fail fast if request is not formatted correctly
-    if "//" in url:
-        raise HTTPException(status_code=400, detail="400 Bad Request: URL should not contain '//'")
+    if "://" in url:
+        raise HTTPException(status_code=400, detail="400 Bad Syntax: accepted format is protocol:url (e.g. http:duckduckgo.com) and should not contain '//'")
     try:
         icon_urls = []
         # Reformat URL from protocol:base_url to protocol://base_url

@@ -28,7 +28,7 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 sudo chmod 666 /var/run/docker.sock
 
 # set build directory from current working directory
-export BUILD_DIRECTORY="$PWD/build"
+export BUILD_DIRECTORY="$PWD"
 
 # Create a systemd service unit file for your Python script
 cat <<EOF | sudo tee /etc/systemd/system/favicon-fetcher.service

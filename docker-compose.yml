@@ -18,7 +18,7 @@ services:
     image: prom/prometheus
     container_name: prometheus
     volumes:
-      - ../monitor/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./monitor/prometheus.yml:/etc/prometheus/prometheus.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     ports:
@@ -50,7 +50,7 @@ services:
       - GF_DATABASE_CONN_MAX_LIFETIME=14400
     volumes:
       - grafana_data:/var/lib/grafana
-      - ../monitor/provisioning:/etc/grafana/provisioning
+      - ./monitor/provisioning:/etc/grafana/provisioning
     ports:
       - "3000:3000"
 
