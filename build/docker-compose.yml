@@ -1,0 +1,52 @@
+version: '1'
+
+services:
+  favicon-fetcher:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ../monitor/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - "9090:9090"
+  node_exporter:
+    image: prom/node-exporter
+    container_name: node_exporter
+    cap_add:
+      - CAP_DAC_READ_SEARCH
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--path.rootfs=/rootfs'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+      - '--no-collector.os'
+    ports:
+      - "9100:9100"
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_DATABASE_MAX_OPEN_CONN=3
+      - GF_DATABASE_MAX_IDLE_CONN=3
+      - GF_DATABASE_CONN_MAX_LIFETIME=14400
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ../monitor/provisioning:/etc/grafana/provisioning
+    ports:
+      - "3000:3000"
+
+volumes:
+  grafana_data:

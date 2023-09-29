@@ -1,0 +1,6 @@
+fastapi==0.70.0
+httpx==0.20.0
+beautifulsoup4==4.10.0
+uvicorn==0.15.0
+docker==5.0.3
+prometheus_fastapi_instrumentator==6.1.0

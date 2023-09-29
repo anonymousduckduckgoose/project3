@@ -1,0 +1,99 @@
+{
+  "title": "Favicon Fetcher API Service Dashboard",
+  "templating": {
+    "list": [
+      {
+        "name": "method",
+        "type": "query",
+        "datasource": "Prometheus",
+        "query": "label_values(http_requests_total, method)",
+        "refresh": 1
+      }
+    ]
+  },
+  "panels": [
+    {
+      "title": "API Requests per Second",
+      "datasource": {
+        "uid": "PBFA97CFB590B2093",
+        "type": "prometheus"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "GET /favicon",
+          "expr": "increase(http_requests_total{handler=\"/favicon/{url:path}\"}[1m])",
+          "range": true,
+          "instant": false,
+          "datasource": {
+            "type": "prometheus"
+          },
+          "editorMode": "code",
+          "legendFormat": "__auto"
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "title": "CPU Usage",
+      "type": "graph",
+      "datasource": {
+        "uid": "PBFA97CFB590B2093",
+        "type": "prometheus"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(node_cpu_seconds_total{mode!=\"idle\"}[5m]))*100",
+          "range": true,
+          "instant": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "legendFormat": "__auto"
+        }
+      ]
+    },
+    {
+      "title": "RAM Usage",
+      "type": "graph",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "refId": "A",
+          "expr": "node_memory_Active_bytes/node_memory_MemTotal_bytes*100",
+          "range": true,
+          "instant": false,
+          "editorMode": "code",
+          "legendFormat": "",
+          "format": "time_series"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 16,
+  "version": 1,
+  "refresh": "5s",
+  "overwrite": true
+}
