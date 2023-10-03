@@ -20,14 +20,14 @@ you may comment out lines 17-58 in ./docker-compose.yml
 
 1. Clone the repository by curling and unzipping the most recent release cut in a tarball.
 ```bash
-curl -L "https://github.com/anonymousduckduckgoose/project3/archive/refs/tags/v2.0.0.tar.gz" > project3-v2.0.0.tar.gz
-tar -xf project3-v2.0.0.tar.gz
+curl -L "https://github.com/anonymousduckduckgoose/project3/archive/refs/tags/v3.0.0.tar.gz" > project3-v3.0.0.tar.gz
+tar -xf project3-v3.0.0.tar.gz
 ```
 
 2. Change directory into your newly cloned repo and run the setup.sh script:
 
 ```bash
-cd project3-2.0.0
+cd project3-3.0.0
 ./setup.sh
 ```
 
