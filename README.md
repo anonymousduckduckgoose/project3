@@ -47,7 +47,26 @@ If your host and port are externally exposed by an IP or domain, you can replace
 http://PUBLICIP:8000/favicon/http:duckduckgo.com
 ```
 
-### Tests
+### Monitoring
+Basic monitoring has been instrumented through Prometheus and ingested to Grafana.
+
+To view the default Grafana Dashboard:
+{HOST} is either `localhost` or your Public IP with a corresponding exposed port.
+Both username and password is `admin` on first login.
+Once logged in you will find the `Favicon Fetcher API Service Dashboard` listed under General Dashboards.
+
+```bash
+http://{HOST}:3000/
+```
+
+To directly view the Prometheus UI
+{HOST} is either `localhost` or your Public IP with a corresponding exposed port.
+
+```bash
+http://{HOST}:9090/
+```
+
+### Testing
 Simplified testcases are provided via ./test/test-favicon-service.py
 To run these tests from the VM, simply run:
 

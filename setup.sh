@@ -40,7 +40,6 @@ Requires=docker.service
 [Service]
 TimeoutStartSec=0
 Restart=unless-stopped
-EnvironmentFile=/etc/my_service_env.conf
 WorkingDirectory=$BUILD_DIRECTORY
 ExecStart=/usr/bin/docker compose up --build
 

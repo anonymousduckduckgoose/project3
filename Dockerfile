@@ -20,4 +20,4 @@ ENV host=0.0.0.0
 ENV port=8000
 
 # Start python service
-ENTRYPOINT ["python3", "favicon_fetcher.py"]
+ENTRYPOINT ["python3", "main.py"]
